@@ -1,0 +1,25 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "github_app"
+include ':app'
+include ':core:uikit'
+include ':core:intent'
+include ':core:di'
+include ':core:commons'
+include ':features:home'
+include ':data:repo'
+include ':core:network'
+include ':features:repo'
+include ':core:features'
