@@ -11,6 +11,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        buildConfigField("String", "TOKEN", "\"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\"")
     }
 
     buildTypes {

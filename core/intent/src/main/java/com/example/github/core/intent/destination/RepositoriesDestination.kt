@@ -12,16 +12,16 @@ object RepositoriesDestination {
 
     object Repositories : ChildDestination(
         parent = ParentDestination.Repositories,
-        route = "home/{user}"
+        route = "home/{login}"
     ) {
         override val arguments: List<NamedNavArgument> = listOf(
-            navArgument("user") {
-                type =  APPNavType(type = User::class.java)
+            navArgument("login") {
+                type =  NavType.StringType
             }
         )
 
-        fun createRoute(user: User): String {
-            return "${parent.route}/home/${user.toGson()}"
+        fun createRoute(login: String): String {
+            return "${parent.route}/home/$login"
         }
     }
 

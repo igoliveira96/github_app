@@ -54,7 +54,12 @@ fun Date.toEventTime(): String {
 }
 
 fun Date.toShortDate(): String {
-    return SimpleDateFormat("dd.MM HH:mm", Locale.getDefault())
+    return SimpleDateFormat("dd.MM", Locale.getDefault())
+        .format(this).toString()
+}
+
+fun Date.toLongDate(): String {
+    return SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
         .format(this).toString()
 }
 

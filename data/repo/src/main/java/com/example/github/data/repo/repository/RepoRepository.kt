@@ -9,6 +9,8 @@ interface RepoRepository {
 
     fun getUsers(): Flow<PagingData<User>>
 
+    fun getUser(login: String): Flow<User>
+
     fun getRepositories(user: String): Flow<PagingData<Repo>>
 
 }

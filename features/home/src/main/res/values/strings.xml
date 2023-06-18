@@ -2,5 +2,4 @@
 <resources>
     <string name="page_title">Usuários</string>
     <string name="error_message">Não foi possível carregar os usuários.</string>
-    <string name="try_again">Tentar novamente!</string>
 </resources>

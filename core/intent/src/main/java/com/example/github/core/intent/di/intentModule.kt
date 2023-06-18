@@ -3,7 +3,9 @@ package com.example.github.core.intent.di
 import com.example.github.core.di.core.ApplicationScope
 import com.example.github.core.intent.core.NavigationManager
 import com.example.github.core.intent.navigation.HomeNavigationImpl
+import com.example.github.core.intent.navigation.RepositoriesNavigationImpl
 import com.example.github.features.home.navigation.HomeNavigation
+import com.example.github.features.repo.navigation.RepositoriesNavigation
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +28,13 @@ internal object NavigationModule {
     @Singleton
     @Provides
     internal fun providesHomeNavigation(
-        homeNavigationImpl: HomeNavigationImpl
-    ) : HomeNavigation = homeNavigationImpl
+        navigation: HomeNavigationImpl
+    ) : HomeNavigation = navigation
+
+    @Singleton
+    @Provides
+    internal fun providesRepositoriesNavigation(
+        navigation: RepositoriesNavigationImpl
+    ) : RepositoriesNavigation = navigation
 
 }

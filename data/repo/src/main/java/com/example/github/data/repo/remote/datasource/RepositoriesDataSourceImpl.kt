@@ -23,10 +23,17 @@ internal class RepositoriesDataSourceImpl @Inject constructor(
                     perPage = 10
                 )
             )
+
+            val nextKey = if (result.isEmpty()) {
+                null
+            } else {
+                params.key?.plus(1) ?: STARTING_PAGE_INDEX.plus(1)
+            }
+
             LoadResult.Page(
                 data = result,
                 prevKey = params.key,
-                nextKey = params.key?.plus(1) ?: STARTING_PAGE_INDEX.plus(1)
+                nextKey = nextKey
             )
         } catch (e: IOException) {
             LoadResult.Error(e)

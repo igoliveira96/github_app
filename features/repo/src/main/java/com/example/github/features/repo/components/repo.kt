@@ -24,13 +24,16 @@ import coil.request.ImageRequest
 import com.example.github.core.uikit.components.IconWithText
 import com.example.github.core.uikit.R as RUiKit
 import com.example.github.core.uikit.theme.GithubTheme.colors
+import com.example.github.core.uikit.utils.toDate
+import com.example.github.core.uikit.utils.toLongDate
+import com.example.github.core.uikit.utils.toShortDate
 import com.example.github.data.repo.model.Repo
 import com.example.github.data.repo.model.User
 
 @Composable
 fun RepoHeader(user: User) {
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -48,7 +51,7 @@ fun RepoHeader(user: User) {
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = "${user.name} | ${user.location}",
+            text = "${user.name}${user.location?.let { " | $it" }}",
             color = Color.White,
             style = TextStyle.Default.copy(
                 fontSize = 16.sp,
@@ -79,7 +82,9 @@ fun RepoCard(repo: Repo, openRepo: (Repo) -> Unit) {
     ) {
         Column {
             Row(horizontalArrangement = Arrangement.End) {
-                CreatedAt("17/01/2017")
+                repo.createdAt.toDate()?.let { date ->
+                    CreatedAt(date.toLongDate())
+                }
             }
             Column(
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -93,14 +98,16 @@ fun RepoCard(repo: Repo, openRepo: (Repo) -> Unit) {
                         fontWeight = FontWeight.W400
                     )
                 )
-                Text(
-                    text = repo.description,
-                    color = Color.White,
-                    style = TextStyle.Default.copy(
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.W400
+                repo.description?.let { description ->
+                    Text(
+                        text = description,
+                        color = Color.White,
+                        style = TextStyle.Default.copy(
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.W400
+                        )
                     )
-                )
+                }
                 Divider(
                     modifier = Modifier.padding(vertical = 8.dp),
                     thickness = 1.dp, color = colors.white50Percent
@@ -148,10 +155,12 @@ private fun RepoCardFooter(repo: Repo, openRepo: () -> Unit) {
                 icon = RUiKit.drawable.ic_star,
                 text = repo.stargazersCount.toString()
             )
-            IconWithText(
-                icon = RUiKit.drawable.ic_code,
-                text = repo.language
-            )
+            repo.language?.let { language ->
+                IconWithText(
+                    icon = RUiKit.drawable.ic_code,
+                    text = language
+                )
+            }
         }
 
         IconButton(onClick = { openRepo() }) {

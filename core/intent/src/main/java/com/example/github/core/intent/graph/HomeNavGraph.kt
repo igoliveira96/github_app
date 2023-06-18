@@ -16,7 +16,6 @@ fun NavGraphBuilder.addHomeNavGraph() {
         startDestination = HomeDestination.Home.createRoute()
     ) {
         addHome()
-        addRepositories()
     }
 }
 
@@ -24,9 +23,7 @@ private fun NavGraphBuilder.addHome() {
     composable(HomeDestination.Home.createRoute()) {
         HomeScreen(viewModel = hiltViewModel())
     }
-}
 
-private fun NavGraphBuilder.addRepositories() {
     composable(RepositoriesDestination.Repositories.createRoute()) {
         RepositoriesScreen(viewModel = hiltViewModel())
     }

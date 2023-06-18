@@ -12,12 +12,14 @@ import java.util.concurrent.TimeUnit
 object Retrofit {
 
     inline operator fun <reified T> invoke(
+        interceptor: Interceptor? = null,
+        authenticator: Authenticator? = null,
         baseUrl: String,
     ): T = Retrofit
         .Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
-        .client(OkHttp())
+        .client(OkHttp(interceptor, authenticator))
         .build().create()
 
     object OkHttp {

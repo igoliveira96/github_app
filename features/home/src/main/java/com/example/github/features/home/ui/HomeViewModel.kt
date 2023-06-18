@@ -8,9 +8,7 @@ import com.example.github.data.repo.model.User
 import com.example.github.data.repo.repository.RepoRepository
 import com.example.github.features.home.navigation.HomeNavigation
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,21 +17,14 @@ class HomeViewModel @Inject constructor(
     private val repository: RepoRepository
 ) : ViewModel() {
 
-    init {
-        viewModelScope.launch {
-            delay(200)
-            navigation.navigateToRepositories(User.EMPTY)
-        }
-    }
-
     fun getUsers(): Flow<PagingData<User>> {
         return repository.getUsers().cachedIn(viewModelScope)
     }
 
-    fun sendEvent(event: HomeEvent) {
+    fun sendEvent(event: HomeUIEvent) {
         when(event) {
-            is HomeEvent.ShowRepositories -> navigation.navigateToRepositories(
-                User(login = "igoliveira", avatarURL = "")
+            is HomeUIEvent.ShowRepositories -> navigation.navigateToRepositories(
+                event.user.login
             )
         }
     }

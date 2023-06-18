@@ -9,7 +9,7 @@ object Versions {
     object Compose {
         const val core = "1.2.1"
         const val activity = "1.4.0"
-        const val navigation = "2.5.1"
+        const val navigation = "2.5.3"
         const val coil = "2.1.0"
         const val accompanist = "0.25.1"
         const val paging = "1.0.0-alpha16"

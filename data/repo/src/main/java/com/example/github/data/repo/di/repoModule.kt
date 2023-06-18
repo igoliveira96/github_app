@@ -4,6 +4,7 @@ import com.example.github.core.network.core.Retrofit
 import com.example.github.data.repo.datasource.UserDataSource
 import com.example.github.data.repo.remote.NetworkConnection
 import com.example.github.data.repo.remote.RepoService
+import com.example.github.data.repo.remote.TokenInterceptor
 import com.example.github.data.repo.remote.datasource.UserDataSourceImpl
 import com.example.github.data.repo.remote.repository.RepoRepositoryImpl
 import com.example.github.data.repo.repository.RepoRepository
@@ -20,8 +21,14 @@ object RepoModule {
 
     @Singleton
     @Provides
+    internal fun providesTokenInterceptor() = TokenInterceptor()
+
+    @Singleton
+    @Provides
     internal fun providesMatchService(
+        tokenInterceptor: TokenInterceptor
     ): RepoService = Retrofit(
+        interceptor = tokenInterceptor,
         baseUrl = NetworkConnection.BASE_URL,
     )
 

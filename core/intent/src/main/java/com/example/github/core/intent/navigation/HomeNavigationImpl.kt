@@ -10,7 +10,7 @@ class HomeNavigationImpl @Inject constructor(
     private val navigationManager: NavigationManager
 ) : HomeNavigation {
 
-    override fun navigateToRepositories(user: User) = navigationManager.navigate(
-        RepositoriesDestination.Repositories.createRoute(user)
+    override fun navigateToRepositories(login: String) = navigationManager.navigate(
+        RepositoriesDestination.Repositories.createRoute(login)
     )
 }

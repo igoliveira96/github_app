@@ -13,7 +13,8 @@ internal object RepoMapper : BaseMapper<RepositoryResponse, Repo> {
         description = remote.description,
         repoURL = remote.repoURL,
         stargazersCount = remote.stargazersCount,
-        language = remote.language
+        language = remote.language,
+        createdAt = remote.createdAt
     )
 
     override fun fromDomain(domain: Repo): RepositoryResponse = RepositoryResponse(
@@ -21,6 +22,7 @@ internal object RepoMapper : BaseMapper<RepositoryResponse, Repo> {
         description = domain.description,
         repoURL = domain.repoURL,
         stargazersCount = domain.stargazersCount,
-        language = domain.language
+        language = domain.language,
+        createdAt = domain.createdAt
     )
 }

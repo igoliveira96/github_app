@@ -24,7 +24,6 @@ import coil.request.ImageRequest
 import com.example.github.core.uikit.R
 import com.example.github.core.uikit.theme.GithubTheme.colors
 import com.example.github.data.repo.model.User
-import com.example.github.features.home.ui.HomeEvent
 
 @Composable
 fun UserCard(user: User, onClick: (User) -> Unit) {
@@ -63,9 +62,5 @@ fun UserCard(user: User, onClick: (User) -> Unit) {
 @Preview
 @Composable
 fun UserCardPreview() {
-    UserCard(
-        User(
-        login = "mojombo",
-        avatarURL = "https://avatars.githubusercontent.com/u/1?v=4"
-    )) { }
+    UserCard(User.EXAMPLE) { }
 }
