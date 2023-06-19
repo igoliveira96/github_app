@@ -15,6 +15,7 @@ dependencies {
     val core = Dependencies.Modules.Core
     val external = Dependencies.External
     val compose = Dependencies.Compose
+    val test = Dependencies.Test
 
     implementation(project(core.commons))
     implementation(project(core.di))
@@ -31,6 +32,11 @@ dependencies {
 
     implementation(Dependencies.External.hilt)
     kapt(Dependencies.External.hiltCompiler)
+
+    testImplementation(test.jUnit)
+    testImplementation(test.mockito)
+    testImplementation(test.mockitoKotlin)
+    testImplementation(test.coroutinesTest)
 
 }
 

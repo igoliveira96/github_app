@@ -27,7 +27,10 @@ object Versions {
 
     object Test {
         const val jUnit = "4.13.2"
+        const val mockito = "5.3.1"
+        const val mockitoKotlin = "4.1.0"
         const val androidTestRules = "1.4.0"
+        const val coroutinesTest = "1.7.1"
     }
 
 }

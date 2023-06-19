@@ -12,7 +12,7 @@ android {
             useSupportLibrary true
         }
 
-        buildConfigField("String", "TOKEN", "\"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\"")
+        buildConfigField("String", "TOKEN", "\"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\"")
     }
 
     buildTypes {
@@ -41,7 +41,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
     packagingOptions {
         resources {
