@@ -22,12 +22,12 @@ import com.example.github.core.uikit.utils.openURL
 import com.example.github.features.repo.R
 import com.example.github.features.repo.components.RepoCard
 import com.example.github.features.repo.components.RepoHeader
+import com.example.github.features.repo.components.UserNotFound
 
 @Composable
 fun RepositoriesScreen(viewModel: RepositoriesViewModel) {
     val state = viewModel.state.collectAsState()
-    val sendEvent = viewModel::sendEvent
-    RepositoriesScreenContent(state.value, sendEvent)
+    RepositoriesScreenContent(state.value, viewModel::sendEvent)
 }
 
 @Composable
@@ -57,6 +57,10 @@ private fun RepositoriesScreenContent(state: RepoUIState, sendEvent: (RepoUIEven
             )
         }
     ) { paddingValues ->
+        if (state.userNotFound) {
+            UserNotFound { sendEvent(RepoUIEvent.PopBackStack) }
+        }
+
         Column(Modifier.padding(paddingValues)) {
             lazyPagingItems?.let {
                 LazyColumn(

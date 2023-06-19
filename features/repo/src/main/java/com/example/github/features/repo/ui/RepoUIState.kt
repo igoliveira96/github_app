@@ -8,5 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 data class RepoUIState(
     val user: User? = null,
-    val repos: Flow<PagingData<Repo>>? = null
+    val repos: Flow<PagingData<Repo>>? = null,
+    val userNotFound: Boolean = false
 ) : UIState

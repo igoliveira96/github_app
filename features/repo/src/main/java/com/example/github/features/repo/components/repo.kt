@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,13 +21,13 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.github.core.uikit.components.IconWithText
-import com.example.github.core.uikit.R as RUiKit
 import com.example.github.core.uikit.theme.GithubTheme.colors
 import com.example.github.core.uikit.utils.toDate
 import com.example.github.core.uikit.utils.toLongDate
-import com.example.github.core.uikit.utils.toShortDate
 import com.example.github.data.repo.model.Repo
 import com.example.github.data.repo.model.User
+import com.example.github.features.repo.R
+import com.example.github.core.uikit.R as RUiKit
 
 @Composable
 fun RepoHeader(user: User) {
@@ -172,6 +171,47 @@ private fun RepoCardFooter(repo: Repo, openRepo: () -> Unit) {
             )
         }
     }
+}
+
+@Composable
+fun UserNotFound(onClick: () -> Unit) {
+    AlertDialog(
+        backgroundColor = colors.raisinBlack,
+        onDismissRequest = {
+
+        },
+        title = {
+            Text(
+                text = stringResource(R.string.user_not_found),
+                color = Color.White,
+                fontWeight = FontWeight.W700
+            )
+        },
+        text = {
+            Text(
+                text = stringResource(R.string.user_not_found_message),
+                color = Color.White
+            )
+        },
+        buttons = {
+            Row(
+                modifier = Modifier
+                    .padding(all = 8.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
+                TextButton(
+                    onClick = { onClick() }
+                ) {
+                    Text(
+                        "Ok",
+                        color = Color.White,
+                        fontWeight = FontWeight.W700
+                    )
+                }
+            }
+        }
+    )
 }
 
 @Preview

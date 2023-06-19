@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="error_message">Não foi possível carregar os repositórios.</string>
+    <string name="user_not_found">Usuário não encontrado</string>
+    <string name="user_not_found_message">Verifique se o nome de usuário está correto e tente novamente</string>
 </resources>
