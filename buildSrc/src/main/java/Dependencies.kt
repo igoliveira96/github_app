@@ -8,7 +8,6 @@ object Dependencies {
             const val intent = ":core:intent"
             const val di = ":core:di"
             const val network = ":core:network"
-            const val features = ":core:features"
         }
 
         object Features {

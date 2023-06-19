@@ -124,13 +124,6 @@ fun SearchTopAppBar(
             .height(80.dp)
             .fillMaxWidth()
     ) {
-//        Image(
-//            modifier = Modifier.fillMaxSize(),
-//            painter = painterResource(id = R.drawable.ic_top_app_bar_bg),
-//            contentDescription = "background_image",
-//            contentScale = ContentScale.FillBounds
-//        )
-
         Surface(
             modifier = Modifier
                 .padding(top = 24.dp)

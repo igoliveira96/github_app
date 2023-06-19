@@ -50,7 +50,6 @@ dependencies {
 
     implementation(project(core.commons))
     implementation(project(core.uikit))
-    implementation(project(core.features))
 
     implementation(project(data.repo))
 
